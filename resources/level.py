@@ -71,6 +71,23 @@ def home(request:Request,db:Session=Depends(get_db)):
         print(e)
         raise HTTPException(status_code=401,detail="Unauthorized")
 
+@router.get("/l1c2")
+def home(request:Request,db:Session=Depends(get_db)):
+    try:
+        token = request.session["user"]
+        payload = jwt.decode(token, BaseConfig.SECRET_KEY, algorithms=[BaseConfig.ALGORITHM] )
+        username: str= payload.get("user_name")
+
+        if username is None:
+            raise HTTPException(status_code=401,detail="Unauthorized")
+        else:
+            login_status=1
+            
+            return templates.TemplateResponse('l1c2.html', context={'request': request,"login_status":login_status,"username":username}) 
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=401,detail="Unauthorized")
+
 @router.post("/flag_verify")
 def home(request:Request,db:Session=Depends(get_db), flag : str = Form(...), pblm_id : str = Form(...)):
     try:

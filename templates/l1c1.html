@@ -4,74 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CTF Header</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="templates/css/style.css">
 </head>
 <body>
-
-<div class="container-fluid bg-dark py-3">
-    <!-- Header container -->
-    <div class="container header">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-lg-3 col-md-3 col-sm-12">
-                <h1 class="text-white text-center mb-0">CTF Platform</h1>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center gap-5 headerLink">
-                <div class="header-item">
-                    <a href="/home" class="text-white"><i class="fas fa-tasks me-2"></i>Challenges</a>
+    
+    <div class="container-fluid bg-dark py-3">
+        <!-- Header container -->
+        <div class="container header">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <h1 class="text-white text-center mb-0">CTF Platform</h1>
                 </div>
-                <div class="header-item">
-                    <a href="/leader" class="text-white"><i class="fas fa-upload me-2"></i>LeaderBoard</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 text-end">
-                <h3 class="team-name mb-0 text-white-50">{{username}}</h3>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container mt-5 levelLink">
-    <div class="card rounded-5">
-        <div class="accordion accordion-flush p-3" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Clue
-                    </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Find the flag hidden within the code.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-4 rounded-3">
-        <div class="d-flex justify-content-center">
-            <div class="card">
-                <form id="flagForm" class="p-4">
-                    <div class="mb-3 px-5">
-                        <input type="hidden" name="pblm_id" id="pblm_id" value="l1c1">
-                        <label for="flag" class="form-label">Submit your flag here</label>
-                        <input type="text" class="form-control" id="flag" name="flag">
-                        <button type="button" onclick="flagVerify()" class="btn btn-primary mt-2 text-align-center">Submit <i class="bi bi-flag-fill"></i></button>
+                <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center gap-5 headerLink">
+                    <div class="header-item">
+                        <a href="/home" class="text-white"><i class="fas fa-tasks me-2"></i>Challenges</a>
                     </div>
-                </form>
+                    <div class="header-item">
+                        <a href="/leader" class="text-white"><i class="fas fa-upload me-2"></i>LeaderBoard</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 text-end">
+                    <h3 class="team-name mb-0 text-white-50">{{username}}</h3>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Clue: Sometimes the answers are where you least expect them, even in the comments. -->
+    
+    <div class="container mt-5 levelLink">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                <li class="breadcrumb-item"><a href="/level1">Level 1</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Challenge 1</li>
+            </ol>
+        </nav>
+        <div class="card rounded-2 mt-2 mb-2">
+            <div class="card-body  p-5">
+                <p class="blockquote text-black-50 fw-bolder"><em>"Not all problems are hard in life, as it seems. You must keep calm and look around you to find solutions."</em></p>
+                <p class="mt-3">Keep this in mind, and find the flag string. Submit the flag down.</p>
+                <span class="badge rounded-pill text-bg-primary">5 Pts</span>
+            </div>
+        </div>
+        <div class="card rounded-5">
+            <div class="accordion accordion-flush p-3" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Clue
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Find the flag which hidden within the code.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" container mt-2 mb-2 alertBox" id="alertsContainer"></div>
+        <div class="row mt-4 rounded-3">
+            <div class="d-flex justify-content-center">
+                <div class="card">
+                    <form id="flagForm" class="p-4">
+                        <div class="mb-3 px-5">
+                            <input type="hidden" name="pblm_id" id="pblm_id" value="l1c1">
+                            <label for="flag" class="form-label">Submit your flag here</label>
+                            <input type="text" class="form-control" id="flag" name="flag">
+                            <button type="button" onclick="flagVerify()" class="btn btn-primary mt-2 text-align-center">Submit <i class="bi bi-flag-fill"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <!-- Clue 2: Sometimes the answers are where you least expect them, even in the comments. -->
     
     <!-- Flag: CTF{XXl1c1flagGY9IWGM} -->
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+        function showAlert(message, type) {
+            var icon = "";
+            if (type === "success") {
+                icon = '<svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>';
+            } else if (type === "warning") {
+                icon = '<svg class="bi flex-shrink-0 me-2" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
+            } else if (type === "danger") {
+                icon = '<svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
+            }
+            var alertDiv = '<div class="alert alert-' + type + ' d-flex align-items-center" role="alert">' + icon + '<div>' + message + '</div></div>';
+            $('#alertsContainer').html(alertDiv);
+        }
+        
     function flagVerify() {
         var formData = $('#flagForm').serialize();
         $.ajax({
@@ -79,13 +107,26 @@
             url: "/flag_verify",
             data: formData,
             success: function(response) {
-                console.log(response.status);
+                console.log(response.status)
+                if (response.status === true) {
+                    // Flag is correct
+                    showAlert("Your flag is correct", "success");
+                } else if (response.status === "repeat") {
+                    // Flag already conquered
+                    showAlert("Flag already conquered", "warning");
+                } else {
+                    // Incorrect flag
+                    showAlert("Incorrect flag", "danger");
+                }
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
+                showAlert("Error occurred", "danger");
             }
         });
     }
-</script>
+
+    
+    </script>
 </body>
 </html>
