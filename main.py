@@ -26,9 +26,9 @@ app.add_middleware(SessionMiddleware, secret_key="e8Lj5R$Zv@n8!sWm3P#q")
 app.mount("/templates", StaticFiles(directory="templates"), name="templates")
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/")
-def index(request:Request):
-    return {"hello": "Drive Wave"}
+# @app.get("/")
+# def index(request:Request):
+#     return {"hello": "Drive Wave"}
 
 app.include_router(router, prefix='')
 

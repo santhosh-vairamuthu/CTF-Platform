@@ -16,10 +16,9 @@ router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 router.mount("/templates", StaticFiles(directory="templates"), name="templates")
 
-@router.get('/login')
+@router.get('/')
 def login(request:Request,):
-      return templates.TemplateResponse('login.html', context={'request': request})
-  
+    return templates.TemplateResponse('login.html', context={'request': request})
 
 @router.post("/logcheck")
 def logcheck(request:Request,db:Session=Depends(get_db),username:str=Form(...),password:str=Form(...)):

@@ -31,5 +31,4 @@ def home(request:Request,db:Session=Depends(get_db)):
             
             return templates.TemplateResponse('index.html', context={'request': request,"login_status":login_status,"username":username}) 
     except:
-         raise HTTPException(status_code=401,detail="Unauthorized")
-  
+        raise HTTPException(status_code=401,detail="Unauthorized")
