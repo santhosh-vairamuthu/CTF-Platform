@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /hidden/
+# Flag: CTF{WFhsMmMyZmxhZ1dSNkNGUlk=}
+# You are almost there. But remember success is not easy.CLue 3 : Think how to decrypt this

@@ -10,6 +10,7 @@ from models import get_db,models
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from resources.utils import create_access_token
 from starlette.middleware.sessions import SessionMiddleware
+from collections import defaultdict
 from jose import jwt, JWTError
 
 current_datetime = datetime.utcnow()
@@ -26,19 +27,29 @@ router.mount("/templates", StaticFiles(directory="templates"), name="templates")
 @router.get("/leader")
 def home(request:Request,db:Session=Depends(get_db)):
     try:
-        token = request.session["user"]
-        payload = jwt.decode(token, BaseConfig.SECRET_KEY, algorithms=[BaseConfig.ALGORITHM] )
-        username: str= payload.get("user_name")
+        token = request.session.get("user")
+        if not token:
+            raise HTTPException(status_code=401, detail="Unauthorized: User not logged in")
 
-        if username is None:
-            raise HTTPException(status_code=401,detail="Unauthorized")
-        else:
-            login_status=1
-            
-            return templates.TemplateResponse('leader.html', context={'request': request,"login_status":login_status,"username":username}) 
+        try:
+            payload = jwt.decode(token, BaseConfig.SECRET_KEY, algorithms=[BaseConfig.ALGORITHM])
+        except JWTError:
+            # JWT decoding error, redirect to login page
+            return RedirectResponse(url="/")
+
+        username = payload.get("user_name")
+        
+        if not username:
+            raise HTTPException(status_code=401, detail="Unauthorized: Invalid user token")
+
+        login_status = 1
+        return templates.TemplateResponse('leader.html', context={'request': request, "login_status": login_status, "username": username})
+    except HTTPException as http_exception:
+        return RedirectResponse(url="/")
     except Exception as e:
         print(e)
-        raise HTTPException(status_code=401,detail="Unauthorized")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
 
 @router.get("/leaderboard_data")
 def leaderboard_data(request: Request, db: Session = Depends(get_db)):
@@ -62,19 +73,19 @@ def leaderboard_data(request: Request, db: Session = Depends(get_db)):
         for user, score, _ in user_scores:
             user_points[user] = user_points.get(user, 0) + score
 
-        # Sort users based on submitted time and total points
-        sorted_users = sorted(user_scores, key=lambda x: (x[2], -user_points[x[0]]))  # Sort by submitted time ascending, then total points descending
+        # Sort users based on total points
+        sorted_users = sorted(user_points.items(), key=lambda x: (-x[1],))  # Sort by total points descending
 
         # Generate leaderboard data
         leaderboard_data = []
         position = 1
         prev_points = None
-        for user, score, submitted_at in sorted_users:
+        for user, total_points in sorted_users:
             # Check for tie and break it using total points
-            if user_points[user] != prev_points:
+            if total_points != prev_points:
                 position += 1
-            leaderboard_data.append({"position": position, "teamname": user, "points": user_points[user]})
-            prev_points = user_points[user]
+            leaderboard_data.append({"position": position, "teamname": user, "points": total_points})
+            prev_points = total_points
 
         return JSONResponse(content=leaderboard_data)
     except Exception as e:

@@ -1,1 +1,6 @@
 env/
+__pycache__/
+config/__pycache__/
+models/__pycache__/
+resources/__pycache__/
+router/__pycache__/

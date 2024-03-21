@@ -1,0 +1,12 @@
+.card.data {
+    position: relative;
+}
+
+.card.data::before {
+    content: "FLAG{XXl1c4flagNIPJTR7}";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Move the flag behind the card */
+    opacity: 0; /* Hide the flag */
+}

@@ -9,9 +9,10 @@ from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
 from datetime import datetime
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.responses import JSONResponse,RedirectResponse
+
 app = FastAPI()
 
 app.add_middleware(
@@ -24,11 +25,12 @@ app.add_middleware(
 )
 app.add_middleware(SessionMiddleware, secret_key="e8Lj5R$Zv@n8!sWm3P#q")
 app.mount("/templates", StaticFiles(directory="templates"), name="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# @app.get("/")
-# def index(request:Request):
-#     return {"hello": "Drive Wave"}
+@app.get("/robots.txt")
+async def get_robots_txt():
+    return FileResponse("static/robots.txt")
 
 app.include_router(router, prefix='')
 

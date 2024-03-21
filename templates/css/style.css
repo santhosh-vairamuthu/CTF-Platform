@@ -5,8 +5,6 @@
     --text: #141415;
     --background: #f6f6f7;
     --primary: #154cb0;
-    --blue:    #154cb0;
-    --bs-btn-bg: #154cb0;
     --secondary: #b6bcc6;
     --accent: #949eb0;
 }
@@ -52,5 +50,6 @@ body {
 
 
 .alertBox{
-    
+    height: 5%;
+    width: 50%;
 }
