@@ -115,7 +115,7 @@ def home(request: Request, db: Session = Depends(get_db)):
             raise HTTPException(status_code=401, detail="Unauthorized: Invalid user token")
 
         login_status = 1
-        return templates.TemplateResponse('l1c1.html', context={'request': request, "login_status": login_status, "username": username})
+        return templates.TemplateResponse('level1/l1c1.html', context={'request': request, "login_status": login_status, "username": username})
     except HTTPException as http_exception:
         return RedirectResponse(url="/")
     except Exception as e:
@@ -141,7 +141,7 @@ def home(request: Request, db: Session = Depends(get_db)):
             raise HTTPException(status_code=401, detail="Unauthorized: Invalid user token")
 
         login_status = 1
-        return templates.TemplateResponse('l1c2.html', context={'request': request, "login_status": login_status, "username": username})
+        return templates.TemplateResponse('level1/l1c2.html', context={'request': request, "login_status": login_status, "username": username})
     except HTTPException as http_exception:
         return RedirectResponse(url="/")
     except Exception as e:
@@ -167,7 +167,7 @@ def home(request: Request, db: Session = Depends(get_db)):
             raise HTTPException(status_code=401, detail="Unauthorized: Invalid user token")
 
         login_status = 1
-        return templates.TemplateResponse('l1c3.html', context={'request': request, "login_status": login_status, "username": username})
+        return templates.TemplateResponse('level1/l1c3.html', context={'request': request, "login_status": login_status, "username": username})
     except HTTPException as http_exception:
         return RedirectResponse(url="/")
     except Exception as e:
@@ -193,7 +193,7 @@ def home(request: Request, db: Session = Depends(get_db)):
             raise HTTPException(status_code=401, detail="Unauthorized: Invalid user token")
 
         login_status = 1
-        return templates.TemplateResponse('l1c4.html', context={'request': request, "login_status": login_status, "username": username})
+        return templates.TemplateResponse('level1/l1c4.html', context={'request': request, "login_status": login_status, "username": username})
     except HTTPException as http_exception:
         return RedirectResponse(url="/")
     except Exception as e:
@@ -219,7 +219,7 @@ def home(request: Request, db: Session = Depends(get_db)):
             raise HTTPException(status_code=401, detail="Unauthorized: Invalid user token")
 
         login_status = 1
-        return templates.TemplateResponse('l1c5.html', context={'request': request, "login_status": login_status, "username": username})
+        return templates.TemplateResponse('level1/l1c5.html', context={'request': request, "login_status": login_status, "username": username})
     except HTTPException as http_exception:
         return RedirectResponse(url="/")
     except Exception as e:
@@ -245,7 +245,7 @@ def home(request: Request, db: Session = Depends(get_db)):
             raise HTTPException(status_code=401, detail="Unauthorized: Invalid user token")
 
         login_status = 1
-        return templates.TemplateResponse('l2c1.html', context={'request': request, "login_status": login_status, "username": username})
+        return templates.TemplateResponse('final/l2c1.html', context={'request': request, "login_status": login_status, "username": username})
     except HTTPException as http_exception:
         return RedirectResponse(url="/")
     except Exception as e:
@@ -271,7 +271,7 @@ def home(request: Request, db: Session = Depends(get_db)):
             raise HTTPException(status_code=401, detail="Unauthorized: Invalid user token")
 
         login_status = 1
-        return templates.TemplateResponse('l2c2.html', context={'request': request, "login_status": login_status, "username": username})
+        return templates.TemplateResponse('final/l2c2.html', context={'request': request, "login_status": login_status, "username": username})
     except HTTPException as http_exception:
         return RedirectResponse(url="/")
     except Exception as e:
