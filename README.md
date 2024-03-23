@@ -23,7 +23,7 @@ Welcome to the CTF Platform repository! This is a web application designed for h
 
 ## Getting Started
 To get started with the CTF Platform, follow these steps:
-1. Clone the repository: `git clone https://github.com/your-username/CTF-Platform.git`
+1. Clone the repository: `git clone https://github.com/santhosh-vairamuthu/CTF-Platform.git`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Configure environment variables: Update the `.env` file with your settings.
 4. Run the application: `uvicorn main:app --reload`
