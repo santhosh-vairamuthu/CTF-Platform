@@ -5,12 +5,10 @@ Welcome to the CTF Platform repository! This is a web application designed for h
 ## Technologies Used
 - **Backend Framework**: FastAPI
 - **Frontend Framework**: Bootstrap
-- **Database**: SQLite (for development), PostgreSQL (for production)
+- **Database**: MySQL (for production)
 - **Authentication**: JWT (JSON Web Tokens)
 - **Session Management**: Starlette Sessions
-- **Hosting**: Deployed on Apache Web Server
 - **Version Control**: Git
-- **CI/CD**: GitHub Actions
 - **Development Tools**: Python, JavaScript, HTML, CSS
 
 ## Current Features
@@ -19,7 +17,6 @@ Welcome to the CTF Platform repository! This is a web application designed for h
 - **Leaderboard**: View a leaderboard showing the scores and rankings of participants.
 - **Flag Submission**: Participants can submit flags for challenges to earn points.
 - **Event Hosting**: Host a single event with a set of predefined challenges.
-- **Feedback**: Participants can provide feedback to organizers.
 
 ## Getting Started
 To get started with the CTF Platform, follow these steps:
