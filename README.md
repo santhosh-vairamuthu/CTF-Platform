@@ -7,13 +7,11 @@ Welcome to the CTF Platform repository! This is a web application designed for h
 - **Frontend Framework**: Bootstrap
 - **Database**: MySQL (for production)
 - **Authentication**: JWT (JSON Web Tokens)
-- **Session Management**: Starlette Sessions
-- **Version Control**: Git
 - **Development Tools**: Python, JavaScript, HTML, CSS
 
 ## Current Features
-- **User Registration and Authentication**: Participants can create accounts and securely log in to track their progress and submit flags.
-- **Challenge Management**: Organizers can create, manage, and delete challenges through an admin panel.
+- **User Authentication**: Participants can securely log in to track their progress and submit flags.
+- **Challenge Management**: Organizers can create, manage, and delete challenges manually.
 - **Leaderboard**: View a leaderboard showing the scores and rankings of participants.
 - **Flag Submission**: Participants can submit flags for challenges to earn points.
 - **Event Hosting**: Host a single event with a set of predefined challenges.
