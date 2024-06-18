@@ -21,7 +21,11 @@ router.mount("/templates", StaticFiles(directory="templates"), name="templates")
 @router.get("/home")
 def home(request: Request, db: Session = Depends(get_db)):
     try:
+        print("Request Headers:")
+        # for key, value in request.headers.items():
+        #     print(f"{key}: {value}")
         token = request.session.get("user")
+        print(token)
         if not token:
             raise HTTPException(status_code=401, detail="Unauthorized: User not logged in")
 

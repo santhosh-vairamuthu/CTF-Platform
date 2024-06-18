@@ -23,7 +23,6 @@ def login(request:Request,):
 @router.post("/logcheck")
 def logcheck(request:Request,db:Session=Depends(get_db),username:str=Form(...),password:str=Form(...)):
     find=db.query(models.User).filter(models.User.Username==username,models.User.Password==password).first()
-    print(find)
     if find is not None:
         error="Valid Creditional"
         access_token_expires = timedelta(minutes=BaseConfig.ACCESS_TOKEN_EXPIRE_MINUTES)
